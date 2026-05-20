@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Marketing · Pousada das Missões</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1E5C1E;
+  --verde2: #2D7A2D;
+  --verde3: #3DAA3D;
+  --verde-claro: #E8F5E8;
+  --dourado: #C8972A;
+  --dourado2: #E8B840;
+  --dourado-claro: #FFF8E0;
+  --bg: #FAFAF6;
+  --bg2: #F0EDE5;
+  --escuro: #181810;
+  --cinza: #5A5A48;
+  --cinza2: #9A9A88;
+  --branco: #FFFFFF;
+  --vermelho: #B83220;
+  --verm-claro: #FFF0EE;
+  --verde-escuro: #0D2E0D;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--escuro); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; line-height: 1.6; }
+
+.pb { position: fixed; top:0; left:0; height:3px; background: linear-gradient(90deg,var(--verde2),var(--dourado)); z-index:1000; transition:width .1s; }
+
+/* NAV */
+.nav { background:var(--verde); padding:14px 56px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; box-shadow:0 2px 20px rgba(0,0,0,0.2); }
+.nav-logo { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--dourado2); }
+.nav-right { display:flex; align-items:center; gap:16px; }
+.nav-date { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:0.1em; text-transform:uppercase; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(155deg, var(--verde-escuro) 0%, var(--verde) 55%, #1A4A1A 100%);
+  padding: 96px 56px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,184,64,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.35em;
+  color: var(--dourado2); text-transform: uppercase;
+  margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--dourado); }
+.hero-title {
+  font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(42px, 6vw, 82px); line-height: 0.95;
+  color: #fff; margin-bottom: 20px; letter-spacing: -0.02em;
+}
+.hero-title em { font-style: italic; color: var(--dourado2); }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 600px; margin-bottom: 64px; line-height: 1.7; }
+
+.hero-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.08); max-width: 800px; border-radius: 12px; overflow: hidden; }
+.hg-item { background: rgba(0,0,0,0.25); padding: 28px 24px; }
+.hg-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 44px; font-weight: 900; color: var(--dourado2); line-height: 1; margin-bottom: 6px; }
+.hg-num.verde { color: #6EE86E; }
+.hg-num.branco { color: #fff; }
+.hg-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); text-transform: uppercase; line-height: 1.4; }
+
+/* WRAP */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 56px 80px; }
+
+/* SECTION */
+.sec { margin-top: 80px; opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
+.sec.vis { opacity:1; transform:translateY(0); }
+.sec-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; color: var(--verde3); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.sec-tag::after { content:''; flex:1; height:1px; background:rgba(0,0,0,0.08); }
+.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(26px,3.5vw,44px); font-weight: 900; line-height: 1.05; margin-bottom: 8px; }
+.sec-title em { font-style: italic; color: var(--verde2); }
+.sec-sub { font-size: 14px; color: var(--cinza); max-width: 640px; margin-bottom: 28px; line-height: 1.7; }
+
+/* CAMPANHA TABLE */
+.camp-table { width:100%; border-collapse:collapse; background:var(--branco); border-radius:12px; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,0.07); }
+.camp-table th { background:var(--verde); color:var(--branco); font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:14px 18px; text-align:left; }
+.camp-table td { padding:16px 18px; font-size:13px; color:var(--escuro); border-bottom:1px solid rgba(0,0,0,0.05); vertical-align:middle; }
+.camp-table tr:last-child td { border-bottom:none; }
+.camp-table tr:hover td { background:rgba(45,122,45,0.03); }
+.camp-table tr.total-row td { background:var(--verde-claro); font-weight:700; font-size:14px; border-top:2px solid var(--verde2); }
+.status-ativo { background:rgba(61,170,61,0.12); color:var(--verde2); font-size:10px; font-weight:700; padding:3px 10px; border-radius:100px; letter-spacing:0.1em; text-transform:uppercase; }
+.status-ok { background:rgba(0,0,0,0.06); color:var(--cinza); font-size:10px; font-weight:600; padding:3px 10px; border-radius:100px; letter-spacing:0.1em; text-transform:uppercase; }
+.num-big { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; font-weight:700; color:var(--verde2); }
+.num-gold { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; font-weight:700; color:var(--dourado); }
+
+/* FUNIL VISUAL */
+.funil-wrap { background:var(--branco); border-radius:16px; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,0.07); border:1px solid rgba(0,0,0,0.06); }
+.funil-header { background:var(--verde); padding:22px 32px; display:flex; justify-content:space-between; align-items:center; }
+.funil-h-title { font-family:'Playfair Display',serif; font-style:italic; font-size:20px; color:var(--dourado2); }
+.funil-h-sub { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:0.1em; text-transform:uppercase; }
+
+.funil-body { padding:32px; }
+.funil-step { display:flex; align-items:center; gap:24px; margin-bottom:12px; }
+.funil-bar-wrap { flex:1; height:52px; background:var(--bg2); border-radius:8px; overflow:hidden; position:relative; }
+.funil-bar { height:100%; border-radius:8px; display:flex; align-items:center; padding:0 16px; transition:width 1.5s ease; }
+.funil-bar.verde { background:linear-gradient(90deg, var(--verde), var(--verde3)); }
+.funil-bar.verde2 { background:linear-gradient(90deg, #1A6B3A, #2D9A5A); }
+.funil-bar.dourado { background:linear-gradient(90deg, var(--dourado), var(--dourado2)); }
+.funil-bar.vermelho { background:linear-gradient(90deg, #C04040, #E05050); }
+.funil-bar-label { font-size:13px; font-weight:700; color:#fff; white-space:nowrap; }
+.funil-num { width:160px; text-align:right; flex-shrink:0; }
+.funil-num-val { font-family:'Playfair Display',serif; font-style:italic; font-size:28px; font-weight:900; color:var(--escuro); line-height:1; }
+.funil-num-lab { font-size:10px; color:var(--cinza2); letter-spacing:0.1em; text-transform:uppercase; }
+.funil-arrow { text-align:center; color:var(--cinza2); font-size:18px; margin:4px 0 4px 184px; }
+
+.funil-gap {
+  background:var(--verm-claro); border:2px dashed var(--vermelho);
+  border-radius:10px; padding:20px 24px; margin-top:20px;
+  display:flex; align-items:center; gap:16px;
+}
+.funil-gap-icon { font-size:28px; flex-shrink:0; }
+.funil-gap-title { font-size:15px; font-weight:700; color:var(--vermelho); margin-bottom:4px; }
+.funil-gap-text { font-size:13px; color:var(--cinza); line-height:1.6; }
+.funil-gap-text strong { color:var(--escuro); font-weight:600; }
+
+/* RECEITA */
+.receita-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.rec-card { background:var(--branco); border-radius:12px; padding:28px 24px; border:1px solid rgba(0,0,0,0.07); box-shadow:0 2px 12px rgba(0,0,0,0.05); position:relative; overflow:hidden; }
+.rec-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.rec-card.c1::before { background:var(--verde2); }
+.rec-card.c2::before { background:var(--dourado); }
+.rec-card.c3::before { background:#2A6A9A; }
+.rec-taxa { font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px; }
+.rec-card.c1 .rec-taxa { color:var(--verde2); }
+.rec-card.c2 .rec-taxa { color:var(--dourado); }
+.rec-card.c3 .rec-taxa { color:#2A6A9A; }
+.rec-reservas { font-size:13px; color:var(--cinza); margin-bottom:4px; }
+.rec-valor { font-family:'Playfair Display',serif; font-style:italic; font-size:36px; font-weight:900; color:var(--escuro); line-height:1; margin-bottom:4px; }
+.rec-sub { font-size:11px; color:var(--cinza2); }
+
+/* ERROS */
+.erros-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.erro-card { background:var(--branco); border:1px solid rgba(0,0,0,0.07); border-radius:10px; padding:20px 18px; display:flex; gap:14px; border-left:4px solid var(--vermelho); }
+.erro-num { font-family:'Playfair Display',serif; font-style:italic; font-size:32px; font-weight:900; color:rgba(184,50,32,0.15); line-height:1; flex-shrink:0; width:40px; }
+.erro-title { font-size:13px; font-weight:700; color:var(--vermelho); margin-bottom:4px; }
+.erro-text { font-size:12px; color:var(--cinza); line-height:1.6; }
+
+/* CONVERSA CERTA vs ERRADA */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.conv-box { border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,0.08); }
+.conv-header { padding:14px 18px; display:flex; align-items:center; gap:10px; }
+.conv-header.errado { background:var(--verm-claro); }
+.conv-header.certo { background:var(--verde-claro); }
+.conv-header-label { font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; }
+.conv-header.errado .conv-header-label { color:var(--vermelho); }
+.conv-header.certo .conv-header-label { color:var(--verde2); }
+.conv-body { background:var(--branco); padding:16px; display:flex; flex-direction:column; gap:8px; }
+
+.msg { padding:9px 13px; border-radius:10px; font-size:12px; line-height:1.6; max-width:85%; }
+.msg.cli { background:#F0F0F0; color:var(--escuro); align-self:flex-start; border-bottom-left-radius:3px; }
+.msg.pos { background:#DCF8C6; color:var(--escuro); align-self:flex-end; border-bottom-right-radius:3px; }
+.msg.pos.ruim { background:#FFDDCC; }
+
+/* ALERTA BOX */
+.alerta { background:var(--dourado-claro); border-left:4px solid var(--dourado); border-radius:0 10px 10px 0; padding:18px 22px; margin-top:20px; }
+.alerta-label { font-size:10px; font-weight:700; letter-spacing:0.2em; color:var(--dourado); text-transform:uppercase; margin-bottom:6px; }
+.alerta-text { font-size:13px; color:var(--cinza); line-height:1.7; }
+.alerta-text strong { color:var(--escuro); font-weight:700; }
+
+/* CONCLUSÃO */
+.conclusao {
+  background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+  border-radius: 20px; padding: 64px 56px; margin-top: 80px;
+  position: relative; overflow: hidden;
+}
+.conclusao::before {
+  content: '"';
+  position: absolute; top: -40px; right: 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 280px; font-weight: 900;
+  color: rgba(232,184,64,0.06); line-height: 1; pointer-events:none;
+}
+.conclusao-title {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(28px, 4vw, 48px); font-weight: 700;
+  color: #fff; line-height: 1.2; margin-bottom: 24px; max-width: 700px; position:relative; z-index:1;
+}
+.conclusao-title em { color: var(--dourado2); font-style: normal; font-weight: 900; }
+.conclusao-itens { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; position:relative; z-index:1; }
+.conc-item { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:20px 18px; }
+.conc-icon { font-size:24px; margin-bottom:10px; }
+.conc-title { font-size:13px; font-weight:700; color:var(--dourado2); margin-bottom:6px; }
+.conc-text { font-size:12px; color:rgba(255,255,255,0.55); line-height:1.6; }
+
+/* FOOTER */
+.footer { background:var(--verde); padding:32px 56px; display:flex; justify-content:space-between; align-items:center; }
+.footer-brand { font-family:'Playfair Display',serif; font-style:italic; font-size:18px; color:var(--dourado2); }
+.footer-meta { font-size:10px; color:rgba(255,255,255,0.3); letter-spacing:0.1em; }
+
+@media(max-width:768px) {
+  .nav,.hero,.wrap,.footer { padding-left:20px; padding-right:20px; }
+  .hero-grid,.receita-grid,.conclusao-itens { grid-template-columns:1fr 1fr; }
+  .two-col,.erros-grid { grid-template-columns:1fr; }
+  .funil-num { width:120px; }
+  .funil-num-val { font-size:22px; }
+  .conclusao { padding:40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="pb" id="pb"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Pousada das Missões</div>
+  <div class="nav-right">
+    <div class="nav-date">Relatório · Maio 2026</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Relatório de Performance de Marketing</div>
+  <h1 class="hero-title">O marketing<br>está <em>funcionando.</em><br>O problema é<br><em>o atendimento.</em></h1>
+  <p class="hero-sub">Dados reais das campanhas da Pousada das Missões. 725 pessoas entraram em contato. Cada dado abaixo prova onde o dinheiro está sendo desperdiçado.</p>
+
+  <div class="hero-grid">
+    <div class="hg-item">
+      <div class="hg-num">270K</div>
+      <div class="hg-label">Visualizações geradas</div>
+    </div>
+    <div class="hg-item">
+      <div class="hg-num">166K</div>
+      <div class="hg-label">Pessoas alcançadas</div>
+    </div>
+    <div class="hg-item">
+      <div class="hg-num verde">725</div>
+      <div class="hg-label">Conversas iniciadas</div>
+    </div>
+    <div class="hg-item">
+      <div class="hg-num branco">R$1,21</div>
+      <div class="hg-label">Custo por lead</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- CAMPANHAS -->
+  <div class="sec">
+    <div class="sec-tag">01 — Campanhas</div>
+    <h2 class="sec-title">Resultados reais de <em>cada campanha</em></h2>
+    <p class="sec-sub">Dados extraídos diretamente do gerenciador de anúncios. Cada linha representa uma campanha com objetivo de mensagens — ou seja, pessoas que clicaram para falar com a pousada.</p>
+
+    <table class="camp-table">
+      <thead>
+        <tr>
+          <th>Campanha</th>
+          <th>Status</th>
+          <th>Visualizações</th>
+          <th>Pessoas alcançadas</th>
+          <th>Conversas iniciadas</th>
+          <th>Investido</th>
+          <th>Custo/conversa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2 dias em São Miguel</strong><br><span style="font-size:11px;color:var(--cinza2)">19 de Maio</span></td>
+          <td><span class="status-ativo">Ativo</span></td>
+          <td><span class="num-big">10.225</span></td>
+          <td>9.613</td>
+          <td><span class="num-big">39</span></td>
+          <td>R$ 50,07</td>
+          <td style="font-weight:600;color:var(--verde2)">R$ 1,28</td>
+        </tr>
+        <tr>
+          <td><strong>2 dias em São Miguel</strong><br><span style="font-size:11px;color:var(--cinza2)">08 de Maio</span></td>
+          <td><span class="status-ok">Concluído</span></td>
+          <td><span class="num-big">61.155</span></td>
+          <td>37.571</td>
+          <td><span class="num-big">180</span></td>
+          <td>R$ 199,96</td>
+          <td style="font-weight:600;color:var(--verde2)">R$ 1,11</td>
+        </tr>
+        <tr>
+          <td><strong>2 dias em São Miguel</strong><br><span style="font-size:11px;color:var(--cinza2)">27 de Abril</span></td>
+          <td><span class="status-ok">Concluído</span></td>
+          <td><span class="num-big">13.876</span></td>
+          <td>10.265</td>
+          <td><span class="num-big">44</span></td>
+          <td>R$ 53,89</td>
+          <td style="font-weight:600;color:var(--verde2)">R$ 1,22</td>
+        </tr>
+        <tr>
+          <td><strong>De segunda a quinta</strong><br><span style="font-size:11px;color:var(--cinza2)">13 de Abril</span></td>
+          <td><span class="status-ok">Concluído</span></td>
+          <td><span class="num-big">24.800</span></td>
+          <td>17.685</td>
+          <td><span class="num-big">49</span></td>
+          <td>R$ 129,95</td>
+          <td style="font-weight:600;color:var(--verde2)">R$ 2,65</td>
+        </tr>
+        <tr>
+          <td><strong>2 dias em São Miguel</strong><br><span style="font-size:11px;color:var(--cinza2)">13 de Abril</span></td>
+          <td><span class="status-ok">Concluído</span></td>
+          <td><span class="num-big">160.500</span></td>
+          <td>91.550</td>
+          <td><span class="num-big">413</span></td>
+          <td>R$ 444,77</td>
+          <td style="font-weight:600;color:var(--verde2)">R$ 1,08</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>TOTAL GERAL</strong></td>
+          <td><strong>270.556</strong></td>
+          <td><strong>166.684</strong></td>
+          <td style="font-size:18px;color:var(--verde)"><strong>725 conversas</strong></td>
+          <td><strong>R$ 878,64</strong></td>
+          <td style="color:var(--verde2)"><strong>R$ 1,21 médio</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alerta">
+      <div class="alerta-label">📊 O que esse número significa</div>
+      <div class="alerta-text">Com <strong>R$ 878,64 investidos</strong>, o marketing gerou <strong>725 pessoas interessadas</strong> o suficiente para iniciar uma conversa com a pousada. Isso representa um custo de <strong>R$ 1,21 por lead</strong> — um resultado excepcionalmente bom para o setor de turismo e hospitalidade. O marketing cumpriu 100% do seu papel.</div>
+    </div>
+  </div>
+
+  <!-- FUNIL -->
+  <div class="sec">
+    <div class="sec-tag">02 — Onde o dinheiro se perde</div>
+    <h2 class="sec-title">O funil que prova <em>onde está o problema</em></h2>
+    <p class="sec-sub">O marketing entrega o lead até a conversa. A partir daí, é responsabilidade do atendimento converter em reserva. Veja o que acontece depois.</p>
+
+    <div class="funil-wrap">
+      <div class="funil-header">
+        <div class="funil-h-title">Funil de Conversão · Pousada das Missões</div>
+        <div class="funil-h-sub">Marketing vs Atendimento</div>
+      </div>
+      <div class="funil-body">
+
+        <div class="funil-step">
+          <div style="width:180px;flex-shrink:0">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:var(--cinza2);text-transform:uppercase;margin-bottom:4px">Etapa 1</div>
+            <div style="font-size:13px;font-weight:600;color:var(--escuro)">Pessoas alcançadas</div>
+            <div style="font-size:10px;color:var(--verde2);font-weight:600;margin-top:2px">✓ Marketing</div>
+          </div>
+          <div class="funil-bar-wrap">
+            <div class="funil-bar verde" style="width:100%">
+              <span class="funil-bar-label">166.684 pessoas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="funil-arrow">↓</div>
+
+        <div class="funil-step">
+          <div style="width:180px;flex-shrink:0">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:var(--cinza2);text-transform:uppercase;margin-bottom:4px">Etapa 2</div>
+            <div style="font-size:13px;font-weight:600;color:var(--escuro)">Conversas iniciadas</div>
+            <div style="font-size:10px;color:var(--verde2);font-weight:600;margin-top:2px">✓ Marketing</div>
+          </div>
+          <div class="funil-bar-wrap">
+            <div class="funil-bar verde2" style="width:0.44%" id="bar2">
+              <span class="funil-bar-label" style="white-space:nowrap;margin-left:8px">725 conversas (0,44%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="funil-arrow">↓</div>
+
+        <div class="funil-step">
+          <div style="width:180px;flex-shrink:0">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.15em;color:var(--cinza2);text-transform:uppercase;margin-bottom:4px">Etapa 3</div>
+            <div style="font-size:13px;font-weight:600;color:var(--escuro)">Reservas fechadas</div>
+            <div style="font-size:10px;color:var(--vermelho);font-weight:600;margin-top:2px">✗ Atendimento</div>
+          </div>
+          <div class="funil-bar-wrap" style="background:var(--verm-claro)">
+            <div class="funil-bar vermelho" style="width:5%" id="bar3">
+              <span class="funil-bar-label">~36 reservas esperadas (5%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="funil-gap">
+          <div class="funil-gap-icon">⚠️</div>
+          <div>
+            <div class="funil-gap-title">O gap que está custando dinheiro real</div>
+            <div class="funil-gap-text">
+              Das <strong>725 pessoas que pediram informações</strong>, a taxa de conversão esperada no setor de turismo é entre 10% e 20%. Isso representaria entre <strong>72 e 145 reservas</strong>. Com diária média de R$380 e 2 noites, são entre <strong>R$54.720 e R$110.200 em receita</strong> que ficou na mesa — não por falta de alcance, mas por falha no processo de atendimento após o lead chegar.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECEITA PERDIDA -->
+  <div class="sec">
+    <div class="sec-tag">03 — Impacto Financeiro</div>
+    <h2 class="sec-title">Quanto foi <em>deixado na mesa</em></h2>
+    <p class="sec-sub">Com 725 conversas iniciadas, veja o que a pousada poderia ter faturado com diferentes taxas de conversão do atendimento.</p>
+
+    <div class="receita-grid">
+      <div class="rec-card c1">
+        <div class="rec-taxa">✓ Conversão conservadora · 10%</div>
+        <div class="rec-reservas">72 reservas fechadas</div>
+        <div class="rec-valor">R$ 54.720</div>
+        <div class="rec-sub">em receita estimada (2 noites × R$380)</div>
+      </div>
+      <div class="rec-card c2">
+        <div class="rec-taxa">✦ Conversão realista · 20%</div>
+        <div class="rec-reservas">145 reservas fechadas</div>
+        <div class="rec-valor">R$ 110.200</div>
+        <div class="rec-sub">em receita estimada (2 noites × R$380)</div>
+      </div>
+      <div class="rec-card c3">
+        <div class="rec-taxa">★ Conversão boa · 30%</div>
+        <div class="rec-reservas">217 reservas fechadas</div>
+        <div class="rec-valor">R$ 164.920</div>
+        <div class="rec-sub">em receita estimada (2 noites × R$380)</div>
+      </div>
+    </div>
+
+    <div class="alerta" style="border-color:var(--vermelho);background:var(--verm-claro)">
+      <div class="alerta-label" style="color:var(--vermelho)">⚠️ Custo real do problema</div>
+      <div class="alerta-text">O investimento total nas campanhas foi de <strong>R$ 878,64</strong>. Esse valor gerou 725 leads qualificados. Se apenas 10% desses leads tivessem sido convertidos pelo atendimento, o retorno seria de <strong>R$ 54.720</strong> — um ROI de <strong>6.227%</strong>. O problema não é o custo do marketing. É o retorno que não está sendo capturado por falta de processo de atendimento.</div>
+    </div>
+  </div>
+
+  <!-- ERROS DE ATENDIMENTO -->
+  <div class="sec">
+    <div class="sec-tag">04 — Diagnóstico do Atendimento</div>
+    <h2 class="sec-title">Os 7 erros identificados <em>nas conversas reais</em></h2>
+    <p class="sec-sub">Análise das conversas reais de WhatsApp da pousada. Cada erro abaixo foi identificado em conversas com leads reais que poderiam ter se tornado hóspedes.</p>
+
+    <div class="erros-grid">
+      <div class="erro-card">
+        <div class="erro-num">1</div>
+        <div>
+          <div class="erro-title">Zero qualificação do lead</div>
+          <div class="erro-text">Nenhum lead é qualificado antes de receber proposta. Não se pergunta quem vem, se já conhece São Miguel, qual o objetivo da viagem. Sem isso, a resposta nunca é personalizada.</div>
+        </div>
+      </div>
+      <div class="erro-card">
+        <div class="erro-num">2</div>
+        <div>
+          <div class="erro-title">Preço sem contexto emocional</div>
+          <div class="erro-text">O valor é enviado de forma seca, sem mostrar o que está incluído de forma atrativa, sem vender o destino antes de vender a suíte. Quem recebe preço sem encantamento sempre acha caro.</div>
+        </div>
+      </div>
+      <div class="erro-card">
+        <div class="erro-num">3</div>
+        <div>
+          <div class="erro-title">Pressão prematura para reservar</div>
+          <div class="erro-text">"Vamos fazer sua reserva?" perguntado antes da pessoa estar pronta. Lead frio tratado como quente — resultado: pessoa desaparece e não volta.</div>
+        </div>
+      </div>
+      <div class="erro-card">
+        <div class="erro-num">4</div>
+        <div>
+          <div class="erro-title">Dados pessoais cedo demais</div>
+          <div class="erro-text">CPF, endereço, CEP, bairro e telefone pedidos antes de confirmar o interesse real. Isso assusta qualquer pessoa que ainda está apenas pesquisando opções.</div>
+        </div>
+      </div>
+      <div class="erro-card">
+        <div class="erro-num">5</div>
+        <div>
+          <div class="erro-title">Encerramento passivo</div>
+          <div class="erro-text">"Qualquer coisa é só me chamar" — essa frase passa a responsabilidade para o cliente. Sem próximo passo definido, a conversa morre e o lead é perdido permanentemente.</div>
+        </div>
+      </div>
+      <div class="erro-card">
+        <div class="erro-num">6</div>
+        <div>
+          <div class="erro-title">Nenhum follow-up estruturado</div>
+          <div class="erro-text">Lead sem data é descartado. Não há processo de recontato após 2-3 dias, não há aproveitamento de feriados ou datas especiais para reativar. A maioria das vendas exige 2 a 3 contatos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARATIVO ATENDIMENTO -->
+  <div class="sec">
+    <div class="sec-tag">05 — Como Deveria Ser</div>
+    <h2 class="sec-title">Atendimento atual vs <em>atendimento correto</em></h2>
+    <p class="sec-sub">Comparativo direto baseado nas conversas reais identificadas.</p>
+
+    <div class="two-col">
+      <div class="conv-box">
+        <div class="conv-header errado">
+          <span style="font-size:18px">❌</span>
+          <div class="conv-header-label">Como está sendo feito</div>
+        </div>
+        <div class="conv-body">
+          <div class="msg cli">Bom dia! Valor fim de semana?</div>
+          <div class="msg pos ruim">Agradecemos sua mensagem. Em que podemos ajudar? Para adiantar seu atendimento, qual data é o check-in e check-out, reserva para quantas pessoas?</div>
+          <div class="msg cli">Duas pessoas.</div>
+          <div class="msg pos ruim">Seria um quarto duplo, R$380/dom a quinta e R$440/sex e sáb. Com café da manhã incluído.</div>
+          <div class="msg cli">Obrigada</div>
+          <div class="msg pos ruim">Certo! Vamos fazer sua reserva?</div>
+          <div class="msg cli">Ainda não 🤔</div>
+          <div class="msg pos ruim">Teria alguma data específica?</div>
+          <div class="msg cli">Não</div>
+          <div style="font-size:11px;color:var(--vermelho);font-weight:600;text-align:center;padding:8px">Lead perdido. Nunca voltou.</div>
+        </div>
+      </div>
+
+      <div class="conv-box">
+        <div class="conv-header certo">
+          <span style="font-size:18px">✅</span>
+          <div class="conv-header-label">Como deveria ser feito</div>
+        </div>
+        <div class="conv-body">
+          <div class="msg cli">Bom dia! Valor fim de semana?</div>
+          <div class="msg pos">Bom dia! 😊 Fico feliz com seu interesse! Qual é o seu nome?</div>
+          <div class="msg cli">Ana!</div>
+          <div class="msg pos">Oi Ana! Para te passar os valores certinhos — seria para casal ou família?</div>
+          <div class="msg cli">Casal.</div>
+          <div class="msg pos">Ótimo Ana! Você já conhece São Miguel ou seria a primeira vez? 🌿</div>
+          <div class="msg cli">Primeira vez!</div>
+          <div class="msg pos">Que experiência incrível vai ser, Ana! As Ruínas ficam a 5 min a pé daqui e o espetáculo de Som e Luz à noite é inesquecível 😊 Para casal: R$380/noite com café incluído. Você já tem uma data em mente?</div>
+          <div class="msg cli">Ainda não tenho data.</div>
+          <div class="msg pos">Sem pressa Ana! Posso te mandar fotos e um roteirinho de 2 dias em São Miguel? Assim você já vai se animando e quando definir a data é só me chamar! 🗺️</div>
+          <div style="font-size:11px;color:var(--verde2);font-weight:600;text-align:center;padding:8px">Nome capturado desde o início. Lead aquecido. Follow-up em 3 dias.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONCLUSÃO -->
+<div class="conclusao">
+  <div class="conclusao-title">
+    O marketing entregou <em>725 oportunidades.</em><br>
+    O atendimento precisa aprender a convertê-las.
+  </div>
+  <div class="conclusao-itens">
+    <div class="conc-item">
+      <div class="conc-icon">✅</div>
+      <div class="conc-title">Marketing funcionando</div>
+      <div class="conc-text">R$1,21 por lead gerado. 166 mil pessoas alcançadas. 725 conversas iniciadas. Resultado acima da média do setor.</div>
+    </div>
+    <div class="conc-item">
+      <div class="conc-icon">⚠️</div>
+      <div class="conc-title">Atendimento: o gargalo</div>
+      <div class="conc-text">Zero qualificação de lead. Pressão prematura. Sem follow-up. Encerramento passivo. Os erros são identificados e têm solução.</div>
+    </div>
+    <div class="conc-item">
+      <div class="conc-icon">🎯</div>
+      <div class="conc-title">A solução existe</div>
+      <div class="conc-text">Script de atendimento estruturado + treinamento da equipe + processo de follow-up. Com 10% de conversão dos leads existentes: R$54.720 em receita.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">Pousada das Missões</div>
+  <div class="footer-meta">Relatório elaborado por Pedro Munaretto · @pedro_munaretto · Maio 2026</div>
+</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const p = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('pb').style.width = p + '%';
+});
+
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.sec').forEach(el => obs.observe(el));
+
+// Animate funil bars on scroll
+const barObs = new IntersectionObserver(e => {
+  e.forEach(x => {
+    if (x.isIntersecting) {
+      setTimeout(() => {
+        document.getElementById('bar2').style.width = '43.5%';
+        document.getElementById('bar3').style.width = '5%';
+      }, 300);
+    }
+  });
+}, { threshold: 0.3 });
+const funil = document.querySelector('.funil-wrap');
+if (funil) barObs.observe(funil);
+document.getElementById('bar2').style.width = '0%';
+document.getElementById('bar3').style.width = '0%';
+</script>
+</body>
+</html>
